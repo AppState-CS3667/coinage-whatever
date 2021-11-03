@@ -15,4 +15,11 @@
 
 ## Etc
 
-[Assignment](https://asulearn.appstate.edu/mod/assign/view.php?id=1694845)
+### Commands
+
+- Run `make` for a list of recipes
+- You can use `make all` to test everything really fast :)
+
+### Links
+
+- [Assignment](https://asulearn.appstate.edu/mod/assign/view.php?id=1694845)
