@@ -1,7 +1,8 @@
 public abstract class AbstractCoin {
 
     private double value;
-    private String countryCode; // change to enum
+    // change to enum later?
+    private String countryCode;
     // int mintingYear;
     // metallic composition later
 
@@ -9,11 +10,11 @@ public abstract class AbstractCoin {
 
         // guard against "bad" values
 
-        if(value < 0) {
+        if (value < 0) {
             throw new IllegalArgumentException("value cannot be negative");
         }
 
-        if(countryCode == null) {
+        if (countryCode == null) {
             throw new NullPointerException("countryCode cannot be null");
         }
 
@@ -31,10 +32,10 @@ public abstract class AbstractCoin {
 
     @Override
     public String toString() {
-        return "[" +
-            "value=" + this.value + "," +
-            "countryCode=" + this.countryCode +
-            "]";
+        return "["
+            + "value=" + this.value + ","
+            + "countryCode=" + this.countryCode
+            + "]";
     }
 
 }
