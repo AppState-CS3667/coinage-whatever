@@ -13,7 +13,7 @@ public class NullCoin extends AbstractCoin {
     private static NullCoin instance;
 
     /**
-      Construct a new NullCoin
+      Construct a new NullCoin.
       */
     private NullCoin() {
         super(0.0d, "No Country");
