@@ -1,16 +1,23 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Test;
 
-import java.io.PrintStream;
-import java.io.ByteArrayOutputStream;
+/**
+  CoinTest
 
-public class CoinTest
-{
-    // Needs class to extend Coins and act as constructor for testing
+  tests the coin classes.
 
+  @author team 'whatever'
+  @version Nov 03
+  */
+public class CoinTest {
+    // Needs MockAbstractCoin for testing below
+
+    /**
+      Sample test.
+      */
     @Test
-    public void CoinTestTest()
-    {
+    public void coinTest() {
         fail("This is supposed to fail");
     }
 }
+
