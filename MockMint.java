@@ -19,7 +19,7 @@ public class MockMint extends Mint {
     @Override
     public AbstractCoin smeltCoin(double denomination) {
         // we do nothing!
-        return null;
+        return NullCoin.getInstance();
     }
 
     @Override
