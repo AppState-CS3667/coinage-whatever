@@ -1,8 +1,5 @@
-import java.lang.IllegalArgumentException;
-import java.io.PrintStream;
-import java.io.ByteArrayOutputStream;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -21,18 +18,20 @@ public class NullCoinTest {
     @Test
     public void testInstance() {
         try {
-            assertNotNull(nullCoin.getInstance());
-        } catch (Exception e) {
-            fail("Instance was found to be null: " + e.getMessage());
+            assertNotNull(NullCoin.getInstance());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            fail("NullCoin.getInstance() threw exception: " + e.getMessage());
         }
     }
 
     /**
-      NullCoin value test
+      NullCoin value test.
       */
     @Test
     public void testValues() {
-        NullCoin nullCoin = nullCoin.getInstance();
+        NullCoin nullCoin = NullCoin.getInstance();
         
         double expectedValue = 0.0d;
         double testValue = nullCoin.getValue();
@@ -41,11 +40,11 @@ public class NullCoinTest {
     }
 
     /**
-      NullCoin countryCode test
+      NullCoin countryCode test.
       */
     @Test
     public void testCountryCode() {
-        NullCoin nullCoin = nullCoin.getInstance();
+        NullCoin nullCoin = NullCoin.getInstance();
 
         String expectedCountry = "No Country";
         String testCountry = nullCoin.getCountryCode();
@@ -54,7 +53,7 @@ public class NullCoinTest {
     }
 
     /**
-      NullCoin toString test
+      NullCoin toString test.
       */
     @Test
     public void testToString() {
