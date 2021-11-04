@@ -18,8 +18,13 @@ public class Demo {
     public static void main(String[] args) {
         System.out.println("We are making coins here.");
 
-        Mint mint = MockMint.getInstance();
-
+        // demo USD
+        Mint mint = USDMint.getInstance();
+        mint.makeCoin(0.01);
+        mint.makeCoin(0.05);
+        mint.makeCoin(0.10);
+        mint.makeCoin(0.25);
+        mint.makeCoin(0.50);
         mint.makeCoin(1.00);
     }
 
