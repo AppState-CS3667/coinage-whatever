@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
   @author team 'whatever'
   @version Nov 03
   */
-public class CoinTest {
-    // Needs MockAbstractCoin for testing below
+public class AbstractCoinTest {
+    // Needs MockCoin (extends AbstractCoin) for testing
 
     /**
       Sample test.
