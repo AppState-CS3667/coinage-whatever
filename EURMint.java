@@ -19,37 +19,33 @@ public class EURMint extends Mint {
     @Override
     public AbstractCoin smeltCoin(double denomination) {
 
-        
-
         if (denomination == 0.01) {
-            return new EuroCent();
+            return new EuroCentCoin();
         }
         else if (denomination == 0.02) {
-            return new TwoEuroCent();
+            return new TwoEuroCentCoin();
         }
-	else if (denomination == 0.05) {
-            return new FiveEuroCent();
+        else if (denomination == 0.05) {
+            return new FiveEuroCentCoin();
         }
-
         else if (denomination == 0.10) {
-            return new TenEuroCent();
+            return new TenEuroCentCoin();
         }
         else if (denomination == 0.25) {
-            return new TwentyEuroCent();
+            return new TwentyEuroCentCoin();
         }
         else if (denomination == 0.5) {
-            return new FiftyEuroCent();
+            return new FiftyEuroCentCoin();
         }
         else if (denomination == 1.0) {
-            return new OneEuro();
+            return new OneEuroCoin();
         }
-	 else if (denomination == 2.0) {
-            return new TwoEuro();
+        else if (denomination == 2.0) {
+            return new TwoEuroCoin();
         }
 
-        
-        // Cant make a null coin!!!
-        return null;
+        // Can't make a coin from the given denomination
+        return NullCoin.getInstance();
     }
 
     @Override
