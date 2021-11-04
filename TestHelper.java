@@ -1,6 +1,7 @@
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import org.junit.jupiter.api.Assertions;
 
 /**
   TestHelper
@@ -87,6 +88,21 @@ public class TestHelper {
 
         return ret;
     }
+
+    /**
+      assertEquals
+
+      Forwards the question to JUnit. This is to reduce code duplication.
+
+      @param expected What the correct answer is
+      @param real What you really got
+      */
+    public static void assertEquals(Object expected, Object real) {
+        Assertions.assertEquals(expected, real,
+                 "Expected: " + expected
+                 + ", but got: " + real);
+    }
+
 
     /**
       TestHelperException

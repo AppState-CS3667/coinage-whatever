@@ -1,9 +1,6 @@
-import java.lang.IllegalArgumentException;
-import java.io.PrintStream;
-import java.io.ByteArrayOutputStream;
-
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
   AbstractCoinTest
@@ -11,13 +8,18 @@ import org.junit.jupiter.api.Test;
   tests the abstract coin class.
 
   @author team 'whatever'
-  @version Nov 03
+  @version Nov 04
   */
 public class AbstractCoinTest {
+
     /**
-      MockCoin class used for testing abstract coin class
+      MockCoin class used for testing abstract coin class.
+
+      @author team 'whatever'
+      @version Nov 04
       */
     private static class MockCoin extends AbstractCoin {
+        /** Create a new MockCoin. */
         public MockCoin() {
             super(0.0, "Mock Country");
         }
@@ -32,47 +34,40 @@ public class AbstractCoinTest {
             AbstractCoin mockCoin = new MockCoin();
 
             assertNotNull(mockCoin);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             fail("Constructor threw exception: " + e.getMessage());
         }
     }
 
     /**
-      AbstractCoin value test
+      AbstractCoin value test.
       */
     @Test
     public void testValues() {
         AbstractCoin mockCoin = new MockCoin();
         
         double expectedValue = 0.0d;
-        double testValue = 0;
+        double testValue = mockCoin.getValue();
 
-        testValue = mockCoin.getValue();
-
-        assertEquals(expectedValue, testValue,
-                 "Expected: " + expectedValue
-                 + ", but got: " + testValue);
+        TestHelper.assertEquals(expectedValue, testValue);
     }
 
     /**
-      AbstractCoin countryCode test
+      AbstractCoin countryCode test.
       */
     @Test
     public void testCountryCode() {
         AbstractCoin mockCoin = new MockCoin();
 
         String expectedCountry = "Mock Country";
-        String testCountry = null;
+        String testCountry = mockCoin.getCountryCode();
 
-        testCountry = mockCoin.getCountryCode();
-
-        assertEquals(expectedCountry, testCountry,
-                 "Expected: " + expectedCountry
-                 + ", but got: " + testCountry);
+        TestHelper.assertEquals(expectedCountry, testCountry);
     }
 
     /**
-      AbstractCoin toString test
+      AbstractCoin toString test.
       */
     @Test
     public void testToString() {
@@ -81,20 +76,13 @@ public class AbstractCoinTest {
         String expectedResult = "[value=0.0,countryCode=Mock Country]";
         String testOutput = null;
 
-        PrintStream origOut = System.out;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream newOut = new PrintStream(baos);
-        System.setOut(newOut);
+        TestHelper.startIntercepting();
 
         System.out.print(mockCoin);
 
-        System.out.flush();
-        testOutput = baos.toString();
-        System.setOut(origOut);
+        testOutput = TestHelper.stopIntercepting();
 
-        assertTrue(expectedResult.equals(testOutput),
-               "Expected:'" + expectedResult
-               + "' but got '" + testOutput + "'.");
+        TestHelper.assertEquals(expectedResult, testOutput);
     }
 }
 
