@@ -19,6 +19,10 @@ public abstract class Mint {
     // our source of chance for random failures
     private static final Random RANDOM = new Random();
 
+    private static final String STR_OK = "OK";
+    private static final String STR_FAIL = "FAILED";
+    private static final String STR_SKIP = "SKIPPED";
+
     /**
       makeCoin
 
@@ -38,9 +42,27 @@ public abstract class Mint {
       @return a coin that has gone through the entire process.
       */
     public final AbstractCoin makeCoin(double denomination) {
+        System.out.println(this + " is minting a coin valued at "
+                + denomination);
 
         // manufacture (actual smelting of metal)
+        System.out.print("Smelting... ");
         AbstractCoin coin = smeltCoin(denomination);
+
+        // defensive: if our subclass acts out of line and returns null, we
+        // are prepared to step in here and put things back on track by
+        // introducing our null object
+        if (coin == null) {
+            coin = NULL_COIN;
+        }
+
+        // detect smelt failure
+        if (coin == NULL_COIN) {
+            System.out.println(STR_FAIL);
+        }
+        else {
+            System.out.println(STR_OK);
+        }
 
         // inspection
         coin = inspectCoin(coin);
@@ -104,6 +126,10 @@ public abstract class Mint {
         return simulateFailure(1000, coin);
     }
 
+    // subclasses are required to give themselves a good name
+    @Override
+    public abstract String toString();
+
     /**
       simulateFailure
 
@@ -118,16 +144,16 @@ public abstract class Mint {
 
         if (coin == NULL_COIN) {
             // this coin is already ruined!
-            System.out.println("SKIPPED");
+            System.out.println(STR_SKIP);
             return coin;
         }
 
         if (RANDOM.nextInt(chance) == 0) {
-            System.out.println("FAILURE");
+            System.out.println(STR_FAIL);
             return NULL_COIN;
         }
         else {
-            System.out.println("OK");
+            System.out.println(STR_OK);
             return coin;
         }
     }
