@@ -16,7 +16,11 @@ public class Demo {
       @param args System command line arguments (ignored).
       */
     public static void main(String[] args) {
-        System.out.println("You are in the coin demo");
+        System.out.println("We are making coins here.");
+
+        Mint mint = MockMint.getInstance();
+
+        mint.makeCoin(1.00);
     }
 
 }
