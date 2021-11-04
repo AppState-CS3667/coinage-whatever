@@ -11,9 +11,7 @@ import java.util.Random;
 public abstract class Mint {
 
     // failure simulation: the return value of failure
-    // when we implement NullCoin we will plug it in here
-    // for now we have null, because we don't have it yet :(
-    private static final AbstractCoin NULL_COIN = null;
+    private static final AbstractCoin NULL_COIN = NullCoin.getInstance();
 
     // failure simulation: the source of randomness
     // our source of chance for random failures

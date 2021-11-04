@@ -10,6 +10,7 @@ default:
 	@echo "- check   - runs checkstyle"
 	@echo "- test    - compiles and runs the JUnit Tests"
 	@echo "- all     - runs clean, check, test, and demo back to back"
+	@echo "- all_nc  - same as 'all', but skips checkstyle"
 
 compile:
 	javac -cp .:$(JUNIT5_JAR) *.java
@@ -28,6 +29,8 @@ check: compile
 
 # do all the 'testing' things all at once
 all: clean check test demo
+
+all_nc: clean test demo
 
 # "PHONY" recipes don't create a file
 .PHONY: all check test compile demo clean
