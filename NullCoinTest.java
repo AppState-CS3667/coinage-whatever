@@ -21,8 +21,6 @@ public class NullCoinTest {
     @Test
     public void testInstance() {
         try {
-            NullCoin nullCoin = null;
-
             assertNotNull(nullCoin.getInstance());
         } catch (Exception e) {
             fail("Instance was found to be null: " + e.getMessage());
@@ -34,17 +32,12 @@ public class NullCoinTest {
       */
     @Test
     public void testValues() {
-        NullCoin nullCoin = null;
-        nullCoin = nullCoin.getInstance();
+        NullCoin nullCoin = nullCoin.getInstance();
         
         double expectedValue = 0.0d;
-        double testValue = 0;
+        double testValue = nullCoin.getValue();
 
-        testValue = nullCoin.getValue();
-
-        assertEquals(expectedValue, testValue,
-                 "Expected: " + expectedValue
-                 + ", but got: " + testValue);
+        TestHelper.assertEquals(expectedValue, testValue);
     }
 
     /**
@@ -52,17 +45,12 @@ public class NullCoinTest {
       */
     @Test
     public void testCountryCode() {
-        NullCoin nullCoin = null;
-        nullCoin = nullCoin.getInstance();
+        NullCoin nullCoin = nullCoin.getInstance();
 
         String expectedCountry = "No Country";
-        String testCountry = null;
+        String testCountry = nullCoin.getCountryCode();
 
-        testCountry = nullCoin.getCountryCode();
-
-        assertEquals(expectedCountry, testCountry,
-                 "Expected: " + expectedCountry
-                 + ", but got: " + testCountry);
+        TestHelper.assertEquals(expectedCountry, testCountry);
     }
 
     /**
@@ -76,20 +64,13 @@ public class NullCoinTest {
         String expectedResult = "[value=0.0,countryCode=No Country]";
         String testOutput = null;
 
-        PrintStream origOut = System.out;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream newOut = new PrintStream(baos);
-        System.setOut(newOut);
+        TestHelper.startIntercepting();
 
         System.out.print(nullCoin);
 
-        System.out.flush();
-        testOutput = baos.toString();
-        System.setOut(origOut);
+        testOutput = TestHelper.stopIntercepting();
 
-        assertTrue(expectedResult.equals(testOutput),
-               "Expected:'" + expectedResult
-               + "' but got '" + testOutput + "'.");
+        TestHelper.assertEquals(expectedResult, testOutput);
     }
 }
 
