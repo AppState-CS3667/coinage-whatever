@@ -1,7 +1,7 @@
 /**
   FiveEuroCentCoin
 
-  EUR coin valued at 0.05.
+  EUR coin that is valued at 0.05.
 
   @author blankenshipgm
   @version 1
