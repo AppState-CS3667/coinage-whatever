@@ -26,6 +26,17 @@ public class Demo {
         mint.makeCoin(0.25);
         mint.makeCoin(0.50);
         mint.makeCoin(1.00);
+
+        // demo EUR
+        mint = EURMint.getInstance();
+        mint.makeCoin(0.01);
+        mint.makeCoin(0.02);
+        mint.makeCoin(0.05);
+        mint.makeCoin(0.10);
+        mint.makeCoin(0.25);
+        mint.makeCoin(0.50);
+        mint.makeCoin(1.00);
+        mint.makeCoin(2.00);
     }
 
 }
