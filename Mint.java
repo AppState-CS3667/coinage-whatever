@@ -21,6 +21,11 @@ public abstract class Mint {
     private static final String STR_FAIL = "FAILED";
     private static final String STR_SKIP = "SKIPPED";
 
+    private static final String STR_STAGE_SMELT = "Smelting.....";
+    private static final String STR_STAGE_INSPE = "Inspecting...";
+    private static final String STR_STAGE_SMOOT = "Smoothing....";
+    private static final String STR_STAGE_BUFFI = "Buffing......";
+
     /**
       makeCoin
 
@@ -44,7 +49,7 @@ public abstract class Mint {
                 + denomination);
 
         // manufacture (actual smelting of metal)
-        System.out.print("Smelting... ");
+        System.out.print(STR_STAGE_SMELT);
         AbstractCoin coin = smeltCoin(denomination);
 
         // defensive: if our subclass acts out of line and returns null, we
@@ -94,7 +99,7 @@ public abstract class Mint {
       @return the inspected coin, or a NullCoin if the inspection failed.
       */
     private final AbstractCoin inspectCoin(AbstractCoin coin) {
-        System.out.print("Inspecting... ");
+        System.out.print(STR_STAGE_INSPE);
         return simulateFailure(12, coin);
     }
 
@@ -107,7 +112,7 @@ public abstract class Mint {
       @return the polished coin, or a NullCoin if the polishing failed.
       */
     private final AbstractCoin smoothCoin(AbstractCoin coin) {
-        System.out.print("Smoothing... ");
+        System.out.print(STR_STAGE_SMOOT);
         return simulateFailure(1000, coin);
     }
 
@@ -120,7 +125,7 @@ public abstract class Mint {
       @return the buffed coin, or a NullCoin if the buffing failed.
       */
     private final AbstractCoin buffCoin(AbstractCoin coin) {
-        System.out.print("Buffing... ");
+        System.out.print(STR_STAGE_BUFFI);
         return simulateFailure(1000, coin);
     }
 
