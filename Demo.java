@@ -3,7 +3,7 @@
 
   Runs the Demo for the Coins application.
 
-  @author turnerpj and team 'whatever'
+  @author hottellbt and team 'whatever'
   @version Nov 3
   */
 public class Demo {
@@ -18,8 +18,8 @@ public class Demo {
     public static void main(String[] args) {
         System.out.println("We are making coins here.");
 
-        // demo GBP
-        Mint mint = GBPMint.getInstance();
+        // demo USD
+        Mint mint = USDMint.getInstance();
         mint.makeCoin(0.01);
         mint.makeCoin(0.05);
         mint.makeCoin(0.10);
