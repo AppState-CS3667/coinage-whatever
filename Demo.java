@@ -22,9 +22,11 @@ public class Demo {
     private static final double[] ALL_EUR = {
         0.01, 0.02, 0.05, 0.10, 0.25, 0.5, 1.0, 2.0 };
 
-    // CAD & GBP not implemented yet
-    // private static double[] ALL_CAD = {};
-    // private static double[] ALL_GBP = {};
+    private static final double[] ALL_CAD = {
+        0.05, 0.1, 0.25, 0.5, 1.0, 2.0 };
+
+    // GBP not implemented yet
+    // private static final double[] ALL_GBP = {};
     
     /**
       main
@@ -52,6 +54,12 @@ public class Demo {
       @param sc user input
       */
     private static void runDemo(String[] args, Scanner sc) {
+
+        if (getArg(args, 0, "").equalsIgnoreCase("all")) {
+            // special demo: make all coins
+            makeAllCoins(sc);
+            return;
+        }
 
         System.out.println("We are making coins.");
 
@@ -134,11 +142,10 @@ public class Demo {
                 return USDMint.getInstance();
             case "eur":
                 return EURMint.getInstance();
-
-            // these files are not coded up yet
-            /*
             case "cad":
                 return CADMint.getInstance();
+
+            /*
             case "gbp":
                 return GBPMint.getInstance();
             */
@@ -286,6 +293,19 @@ public class Demo {
             return def;
         }
         return args[index];
+    }
+
+    private static void makeAllCoins(Scanner sc) {
+        mintForEach(sc, USDMint.getInstance(), ALL_USD);
+        mintForEach(sc, EURMint.getInstance(), ALL_EUR);
+        mintForEach(sc, CADMint.getInstance(), ALL_CAD);
+        // mintForEach(sc, GBPMint.getInstance(), ALL_GBP);
+    }
+
+    private static void mintForEach(Scanner sc, Mint mint, double[] values) {
+        for (double value : values) {
+            demoMakeCoin(sc, mint, value);
+        }
     }
 }
 

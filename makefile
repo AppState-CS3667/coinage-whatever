@@ -18,6 +18,9 @@ compile:
 demo: compile
 	java Demo
 
+demo_all_coins: compile
+	java Demo all
+
 test: compile $(JUNIT5_JAR)
 	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path
 
@@ -33,4 +36,4 @@ all: clean check test demo
 all_nc: clean test demo
 
 # "PHONY" recipes don't create a file
-.PHONY: all check test compile demo clean
+.PHONY: all all_nc check test compile demo demo_all_coins clean
