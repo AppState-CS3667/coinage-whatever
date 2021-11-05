@@ -10,6 +10,12 @@ import java.util.Scanner;
   */
 public class Demo {
 
+    private static final String STR_INVALID_MINT = 
+        "What? I've never heard of that mint!";
+
+    private static final String STR_INVALID_DOUBLE =
+        "Invalid decimal number.";
+
     private static final double[] ALL_USD = { 
         0.01, 0.05, 0.1, 0.25, 0.5, 1.0 };
 
@@ -25,16 +31,93 @@ public class Demo {
 
       The program starts here.
 
-      @param args System command line arguments (ignored).
+      @param args System command line arguments.
       */
     public static void main(String[] args) {
-        System.out.println("We are making coins here.");
+        try (Scanner sc = new Scanner(System.in)) {
+            runDemo(args, sc);
+        }
+        catch (Exception e) {
+            System.err.println("An exception occurred while running the demo.");
+            e.printStackTrace();
+        }
+    }
 
-        String argMintName = getArg(args, 0);
-        String argCoinValueStr = getArg(args, 1);
+    /**
+      runDemo
 
-        demoUSD();
-        demoEUR();
+      Runs the demo.
+
+      @param args command line arguments
+      @param sc user input
+      */
+    private static void runDemo(String[] args, Scanner sc) {
+
+        System.out.println("We are making coins.");
+
+        String argMintName = getArg(args, 0, null);
+        String argCoinValueStr = getArg(args, 1, null);
+
+        // mint as selected by user args
+        // if null, user didn't specify a mint
+        // (we specify the mint later interactively in that case)
+        Mint argMint = null;
+
+        // double as selected by user args
+        // if null, user didn't specify a value
+        // (we specify the value later interactively)
+        Double argCoinValue = null;
+
+        if (argMintName != null) {
+            argMint = getMint(argMintName);
+
+            if (argMint == null) {
+                System.out.println(STR_INVALID_MINT);
+                System.exit(1);
+            }
+        }
+
+        if (argCoinValueStr != null) {
+            argCoinValue = tryParseDouble(argCoinValueStr);
+
+            if (argCoinValue == null) {
+                System.out.println(STR_INVALID_DOUBLE);
+                System.exit(1);
+            }
+        }
+
+        // interactive if the user left one or more args out
+        boolean interactive = argMint == null || argCoinValue == null;
+
+        // the loop keeps going if we are in an interactive session
+        do {
+
+            // recall that argMint is null if we are interactive
+            Mint mint = argMint;
+
+            // recall that argCoinValue is null if we are interactive
+            Double coinValue = argCoinValue;
+
+            while (mint == null) {
+                mint = getMint(prompt(sc, "Which mint?"));
+
+                if (mint == null) {
+                    System.out.println(STR_INVALID_MINT);
+                    // don't exit, let the user try again
+                }
+            }
+
+            while (coinValue == null) {
+                coinValue = tryParseDouble(prompt(sc, "Which coin value?"));
+
+                if (coinValue == null) {
+                    System.out.println(STR_INVALID_DOUBLE);
+                }
+            }
+
+            demoMakeCoin(sc, mint, coinValue);
+
+        } while(interactive);
     }
 
     /**
@@ -69,38 +152,6 @@ public class Demo {
     }
 
     /**
-      demoEUR
-
-      Shows off the EURMint.
-      */
-    private static void demoEUR() {
-        Mint mint = EURMint.getInstance();
-        mint.makeCoin(0.01);
-        mint.makeCoin(0.02);
-        mint.makeCoin(0.05);
-        mint.makeCoin(0.10);
-        mint.makeCoin(0.25);
-        mint.makeCoin(0.50);
-        mint.makeCoin(1.00);
-        mint.makeCoin(2.00);
-    }
-
-    /**
-      demoUSD
-
-      Shows off the USDMint.
-      **/
-    private static void demoUSD() {
-        Mint mint = USDMint.getInstance();
-        mint.makeCoin(0.01);
-        mint.makeCoin(0.05);
-        mint.makeCoin(0.10);
-        mint.makeCoin(0.25);
-        mint.makeCoin(0.50);
-        mint.makeCoin(1.00);
-    }
-
-    /**
       demoMakeCoin
 
       Makes a coin in the demo.
@@ -114,7 +165,7 @@ public class Demo {
         boolean running = true;
         AbstractCoin c;
 
-        while (running) {
+        do {
             c = mint.makeCoin(value);
 
             if (c == NullCoin.getInstance()) {
@@ -123,7 +174,11 @@ public class Demo {
             else {
                 running = false;
             }
-        }
+        } while(running);
+
+        System.out.println("Got this coin object:");
+        System.out.println(c.getClass());
+        System.out.println(c);
     }
 
     /**
@@ -133,12 +188,17 @@ public class Demo {
 
       @param sc Scanner for user input
       @param prompt What to ask the user
-      @return true if Y, false if N
+      @return true if Y, false if N or the input ended abruptly
       */
     private static boolean yn(Scanner sc, String prompt) {
         while (true) {
             System.out.print(prompt);
             System.out.print(" (y/n): ");
+
+            if (!sc.hasNextLine()) {
+                return false;
+            }
+
             String ln = sc.nextLine();
 
             if (ln == null) {
@@ -147,13 +207,67 @@ public class Demo {
 
             ln = ln.strip().toLowerCase();
 
-            if (ln == "y") {
+            if (ln.equals("y")) {
                 return true;
             }
-            else if (ln == "n") {
+            else if (ln.equals("n")) {
                 return false;
             }
 
+        }
+    }
+
+    /**
+      prompt
+
+      Asks the user for a nonempty string.
+      
+      @param sc Scanner for user input
+      @param prompt What to ask the user
+      @return what the user wrote, or null if there is no more input
+      */
+    private static String prompt(Scanner sc, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            System.out.print(": ");
+
+            if (!sc.hasNextLine()) {
+                System.out.println("Input ended abruptly!");
+                System.exit(1);
+            }
+
+            String given = sc.nextLine();
+
+            if (given == null) {
+                System.out.println("Input ended abruptly!");
+                System.exit(1);
+            }
+
+            given = given.trim();
+
+            if (!given.isEmpty()) {
+                return given;
+            }
+        }
+    }
+
+    /**
+      tryParseDouble
+
+      Attempts to parse a string as a double.
+
+      @param str The string to parse
+      @return null if it failed, or a nonnull double if successful.
+      */
+    private static Double tryParseDouble(String str) {
+        if (str == null) {
+            return null;
+        }
+        try {
+            return Double.parseDouble(str);
+        }
+        catch (NumberFormatException nfe) {
+            return null;
         }
     }
 
@@ -164,11 +278,12 @@ public class Demo {
 
       @param args Array of arguments
       @param index Which argument to select
-      @return the argument, or null if index is out of bounds
+      @param def Default value if argument isn't specified
+      @return the argument, or def if index is out of bounds
       */
-    private static String getArg(String[] args, int index) {
+    private static String getArg(String[] args, int index, String def) {
         if (index < 0 || index >= args.length) {
-            return null;
+            return def;
         }
         return args[index];
     }
