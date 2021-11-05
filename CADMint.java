@@ -7,7 +7,7 @@
   @version Nov. 5
   */
 public class CADMint extends Mint {
-    // Field for singleton patter
+    // Field for singleton pattern
     private static CADMint instance;
 
     //Null Coin to return when smeltCoin fails
