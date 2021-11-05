@@ -37,6 +37,15 @@ public class Demo {
         mint.makeCoin(0.50);
         mint.makeCoin(1.00);
         mint.makeCoin(2.00);
+
+        // demo CAD
+        mint = CADMint.getInstance();
+        mint.makeCoin(0.05);
+        mint.makeCoin(0.1);
+        mint.makeCoin(0.25);
+        mint.makeCoin(0.5);
+        mint.makeCoin(1.0);
+        mint.makeCoin(2.0);
     }
 
 }
