@@ -25,8 +25,8 @@ public class Demo {
     private static final double[] ALL_CAD = {
         0.05, 0.1, 0.25, 0.5, 1.0, 2.0 };
 
-    // GBP not implemented yet
-    // private static final double[] ALL_GBP = {};
+    private static final double[] ALL_GBP = {
+        0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00, 2.00, 5.00 };
     
     /**
       main
@@ -144,12 +144,8 @@ public class Demo {
                 return EURMint.getInstance();
             case "cad":
                 return CADMint.getInstance();
-
-            /*
             case "gbp":
                 return GBPMint.getInstance();
-            */
-
             case "null":
             case "mint":
                 return MockMint.getInstance();
@@ -306,7 +302,7 @@ public class Demo {
         mintForEach(sc, USDMint.getInstance(), ALL_USD);
         mintForEach(sc, EURMint.getInstance(), ALL_EUR);
         mintForEach(sc, CADMint.getInstance(), ALL_CAD);
-        // mintForEach(sc, GBPMint.getInstance(), ALL_GBP);
+        mintForEach(sc, GBPMint.getInstance(), ALL_GBP);
     }
 
     /**
