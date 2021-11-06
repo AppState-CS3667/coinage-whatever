@@ -27,13 +27,19 @@ public class GBPMintTest {
     @Test
     public void testValidCoins() {
         for (double value : VALUES) {
-            AbstractCoin c = MINT.makeCoin(value);
+
+            /*
+            NOTE! You have to do "smeltCoin" because if you do createCoin
+            then the coin creation might fail because it's doing a bunch of
+            other things that replace the result with NullCoin.
+            */
+            AbstractCoin c = MINT.smeltCoin(value);
 
             if (c == null) {
                 fail("Issue with value " + value + ": returns null");
             }
 
-            if (c == NullCoin.getInstance()) {
+            if (NullCoin.getInstance().equals(c)) {
                 fail("Issue with value " + value + ": returns NullCoin");
             }
 
@@ -55,7 +61,7 @@ public class GBPMintTest {
     @Test
     public void testBogusCoins() {
         for (double value : BOGUS_VALUES) {
-            AbstractCoin c = MINT.makeCoin(value);
+            AbstractCoin c = MINT.smeltCoin(value);
 
             if (c == null) {
                 fail("Issue with value " + value + ": returns null");
