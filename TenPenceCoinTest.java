@@ -40,12 +40,9 @@ public class TenPenceCoinTest {
       */
     @Test
     public void testToString() {
-        TestHelper.startIntercepting();
-        System.out.print(coin);
-
         TestHelper.assertEquals(
                 "[value=0.1,countryCode=GBP]",
-                TestHelper.stopIntercepting());
+                coin.toString());
     }
 }
 
