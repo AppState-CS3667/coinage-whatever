@@ -5,7 +5,7 @@ import java.util.Scanner;
 
   Runs the Demo for the Coins application.
 
-  @author hottellbt and team 'whatever'
+  @author turnerpj and team 'whatever'
   @version Nov 3
   */
 public class Demo {
@@ -295,6 +295,13 @@ public class Demo {
         return args[index];
     }
 
+    /**
+      makeAllCoins
+
+      Makes all the coins across all mints.
+
+      @param sc user input
+      */
     private static void makeAllCoins(Scanner sc) {
         mintForEach(sc, USDMint.getInstance(), ALL_USD);
         mintForEach(sc, EURMint.getInstance(), ALL_EUR);
@@ -302,6 +309,15 @@ public class Demo {
         // mintForEach(sc, GBPMint.getInstance(), ALL_GBP);
     }
 
+    /**
+      mintForEach
+
+      For loop to reduce code duplication.
+
+      @param sc user input
+      @param mint the mint that makes coins
+      @param values the denominations of coins to make
+      */
     private static void mintForEach(Scanner sc, Mint mint, double[] values) {
         for (double value : values) {
             demoMakeCoin(sc, mint, value);
