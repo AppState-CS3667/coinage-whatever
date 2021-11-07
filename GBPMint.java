@@ -47,7 +47,7 @@ public class GBPMint extends Mint {
             return new FivePoundCoin();
         }
 
-        return null;
+        return NullCoin.getInstance();
     }
 
     @Override
