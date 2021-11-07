@@ -40,7 +40,7 @@ public class FiftyCentCoinTest {
     @Test
     public void testToString() {
         TestHelper.assertEquals(
-                "[value=0.50,countryCode=CAD]",
+                "[value=0.5,countryCode=CAD]",
                 coin.toString());
     }
 }

@@ -40,7 +40,7 @@ public class ToonieCoinTest {
     @Test
     public void testToString() {
         TestHelper.assertEquals(
-                "[value=2.00,countryCode=CAD]",
+                "[value=2.0,countryCode=CAD]",
                 coin.toString());
     }
 }

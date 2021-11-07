@@ -40,7 +40,7 @@ public class CADDimeCoinTest {
     @Test
     public void testToString() {
         TestHelper.assertEquals(
-                "[value=0.10,countryCode=CAD]",
+                "[value=0.1,countryCode=CAD]",
                 coin.toString());
     }
 }
