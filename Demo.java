@@ -208,12 +208,10 @@ public class Demo {
                 return false;
             }
 
-            ln = ln.strip().toLowerCase();
-
-            if (ln.equals("y")) {
+            if (ln.equalsIgnoreCase("y")) {
                 return true;
             }
-            else if (ln.equals("n")) {
+            else if (ln.equalsIgnoreCase("n")) {
                 return false;
             }
 
