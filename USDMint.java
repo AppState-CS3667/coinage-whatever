@@ -8,11 +8,7 @@
   */
 public class USDMint extends Mint {
 
-    // singleton pattern
     private static USDMint instance;
-
-    // return this coin when smeltCoin fails
-    private static final AbstractCoin NULL_COIN = NullCoin.getInstance();
 
     /**
       Creates a new USDMint instance.
@@ -47,7 +43,7 @@ public class USDMint extends Mint {
 
         // what the heck???
         // i can't make that!!!
-        return NULL_COIN;
+        return null;
     }
 
     @Override
