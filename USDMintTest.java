@@ -17,31 +17,53 @@ public class USDMintTest {
     };
     private static final double[] VERY_BAD_VALUES = new double[] {
         -1.0, 0.0, Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY
-    }
+    };
     
     /**
-      Tests how the mint will react to good, valid coins
+      Tests how the mint will react to good, valid coins.
      */
     @Test
     public void testValidCoins() {
-        for (double val : VALUES) {
+        for (int i = 0; i < VALUES.length; i++) {
+            double val = VALUES[i];
             AbstractCoin c = MINT.smeltCoin(val);
-            if (c = null) {
-                fail("Issue with value " + val + " : returned null";)
+            if (c == null) {
+                fail("Issue with value " + val + " : returned null");
             }
-            if (NullCoin.getInstance().equals(c)) {
+            else if (NullCoin.getInstance().equals(c)) {
                 fail("Issue with value " + val + ": returned NullCoin");
             }
-            if (!COUNTRY_CODE.equals(c.getCountryCode())) {
+            else if (!COUNTRY_CODE.equals(c.getCountryCode())) {
                 fail("Issue with value " + val
                         + ": returns coin with incorrect country code "
                         + "(Country code should be \"USD\")");
             }
-            if (c.getValue() != val) {
+            else if (c.getValue() != val) {
                 fail("Issue with value " + val
                         + ": returned coin with value " + val
                         + " when coin value should be " + c.getValue());
             }
         }
     }
+
+    /**
+      Tests how the mint will react to very bad valued coins.
+     */
+    @Test
+    public void testVeryBadCoins() {
+        for (int i = 0; i < VERY_BAD_VALUES.length; i++) {
+            double val = VERY_BAD_VALUES[i];
+            AbstractCoin c = MINT.smeltCoin(val);
+
+            if (c == null) {
+                fail("Issue with value " + val + " : returned null");
+            }
+            else if (c != NullCoin.getInstance()) {
+                fail("Issue with value " + val + " : didn't return NullCoin "
+                    + "when it was should of.");
+            }
+        }
+        
+    }
+
 }
