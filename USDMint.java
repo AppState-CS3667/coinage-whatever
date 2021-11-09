@@ -43,7 +43,7 @@ public class USDMint extends Mint {
 
         // what the heck???
         // i can't make that!!!
-        return null;
+        return NullCoin.getInstance();
     }
 
     @Override
