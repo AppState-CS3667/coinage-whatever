@@ -61,7 +61,7 @@ public class Demo {
             return;
         }
 
-        System.out.println("We are making coins.");
+        System.out.println("We are making coins. (Enter 0 to quit)");
 
         String argMintName = getArg(args, 0, null);
         String argCoinValueStr = getArg(args, 1, null);
@@ -239,6 +239,9 @@ public class Demo {
 
             String given = sc.nextLine();
 
+            if (given.equals("0"))
+                System.exit(1);
+            
             if (given == null) {
                 System.out.println("Input ended abruptly!");
                 System.exit(1);
