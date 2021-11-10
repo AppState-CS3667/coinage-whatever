@@ -25,6 +25,7 @@ public abstract class Mint {
     private static final String STR_STAGE_INSPE = "Inspecting...";
     private static final String STR_STAGE_SMOOT = "Smoothing....";
     private static final String STR_STAGE_BUFFI = "Buffing......";
+    private static final String STR_STAGE_IMPRI = "Imprinting...";
 
     /**
       makeCoin
@@ -127,6 +128,23 @@ public abstract class Mint {
     private final AbstractCoin buffCoin(AbstractCoin coin) {
         System.out.print(STR_STAGE_BUFFI);
         return simulateFailure(1000, coin);
+    }
+    
+    /**
+      imprintCoin
+
+      Imprints a coin.
+
+      @param coin the coin to imprint
+      @return the imprinted coin, or a NullCoin if the imprinting failed.
+      */
+    private final AbstractCoin imprintCoin(AbstractCoin coin) {
+        System.out.println(STR_STAGE_IMPRI);
+        boolean success = coin.imprint();
+        if (!success) {
+            return NULL_COIN;
+        }
+        return coin;
     }
 
     // subclasses are required to give themselves a good name

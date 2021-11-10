@@ -9,8 +9,8 @@
 public abstract class AbstractCoin {
 
     private double value;
-    // change to enum later?
     private String countryCode;
+    private ImprintStrategy imprintStrategy;
     // int mintingYear;
     // metallic composition later
 
@@ -20,7 +20,10 @@ public abstract class AbstractCoin {
       @param value the value of this coin in the local currency
       @param countryCode the country code of this coin, e.g. USD
       */
-    public AbstractCoin(double value, String countryCode) {
+    public AbstractCoin(
+            double value,
+            String countryCode,
+            ImprintStrategy imprintStrategy) {
 
         // guard against "bad" values
 
@@ -32,8 +35,13 @@ public abstract class AbstractCoin {
             throw new NullPointerException("countryCode cannot be null");
         }
 
+        if(imprintStrategy == null) {
+            throw new NullPointerException("imprintStrategy cannot be null");
+        }
+
         this.value = value;
         this.countryCode = countryCode;
+        this.imprintStrategy = imprintStrategy;
     }
 
     /**
