@@ -19,6 +19,7 @@ public abstract class AbstractCoin {
 
       @param value the value of this coin in the local currency
       @param countryCode the country code of this coin, e.g. USD
+      @param imprintStrategy the strategy for imprinting this coin
       */
     public AbstractCoin(
             double value,
@@ -35,7 +36,7 @@ public abstract class AbstractCoin {
             throw new NullPointerException("countryCode cannot be null");
         }
 
-        if(imprintStrategy == null) {
+        if (imprintStrategy == null) {
             throw new NullPointerException("imprintStrategy cannot be null");
         }
 
