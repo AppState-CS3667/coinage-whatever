@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
 
 /**
   A test class for DateHelper class.
@@ -14,9 +13,7 @@ public class DateHelperTest {
       */
     @Test
     public void testValue() {
-        DateHelper date = new DateHelper();
-
-        TestHelper.assertEquals(date.getYear(), 2021);
+        TestHelper.assertEquals(DateHelper.getYear(), 2021);
     }
 }
 
