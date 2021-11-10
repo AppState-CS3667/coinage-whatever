@@ -10,7 +10,7 @@ public class NullSmelt implements SmeltStrategy {
 
     @Override
     public boolean smelt(AbstractCoin self) {
-        // do nothing
-        return true;
+        // do nothing and fail
+        return false;
     }
 }
