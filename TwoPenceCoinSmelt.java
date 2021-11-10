@@ -14,7 +14,7 @@ public class TwoPenceCoinSmelt implements SmeltStrategy {
 
     @Override
     public String getSpecs() {
-        return "Unknown";
+        return "Cu plated steel";
     }
 }
 

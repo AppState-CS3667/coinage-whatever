@@ -14,7 +14,7 @@ public class DollarCoinSmelt implements SmeltStrategy {
 
     @Override
     public String getSpecs() {
-        return "Unknown";
+        return "88.5% Cu 6% Zi 3.5% Mn 2% Ni";
     }
 }
 

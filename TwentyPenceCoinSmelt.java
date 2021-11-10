@@ -14,7 +14,7 @@ public class TwentyPenceCoinSmelt implements SmeltStrategy {
 
     @Override
     public String getSpecs() {
-        return "Unknown";
+        return "84% Cu 16% Ni";
     }
 }
 
