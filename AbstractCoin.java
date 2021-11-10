@@ -63,6 +63,15 @@ public abstract class AbstractCoin {
         return countryCode;
     }
 
+    /**
+      Imprints the coin
+
+      @return true if successful, false otherwise
+      */
+    public boolean imprint() {
+        return this.imprintStrategy.imprint(this);
+    }
+
     @Override
     public String toString() {
         return "["
