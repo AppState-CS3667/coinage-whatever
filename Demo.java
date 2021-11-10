@@ -40,7 +40,8 @@ public class Demo {
             runDemo(args, sc);
         }
         catch (Exception e) {
-            System.err.println("An exception occurred while running the demo.");
+            System.err.println(
+                    "An exception occurred while running the demo.");
             e.printStackTrace();
         }
     }
@@ -55,32 +56,35 @@ public class Demo {
       */
     private static void runDemo(String[] args, Scanner sc) {
 
+        System.out.println("We are making coins.");
+
         if (getArg(args, 0, "").equalsIgnoreCase("all")) {
             // special demo: make all coins
+            // useful for rapid debug :)
             makeAllCoins(sc);
             return;
         }
 
-        System.out.println("We are making coins.");
-
+        // the user can optionally specify arguments
+        // argument 1: name of a mint
+        // argument 2: denomination of a coin
+        // if not specified, they will be prompted interactively
         String argMintName = getArg(args, 0, null);
         String argCoinValueStr = getArg(args, 1, null);
 
         // mint as selected by user args
-        // if null, user didn't specify a mint
-        // (we specify the mint later interactively in that case)
+        // if null, user didn't specify a mint in the command line
         Mint argMint = null;
 
         // double as selected by user args
-        // if null, user didn't specify a value
-        // (we specify the value later interactively)
+        // if null, user didn't specify a value in the command line
         Double argCoinValue = null;
 
         if (argMintName != null) {
             argMint = getMint(argMintName);
 
             if (argMint == null) {
-                System.out.println(STR_INVALID_MINT);
+                System.err.println(STR_INVALID_MINT);
                 System.exit(1);
             }
         }
@@ -89,43 +93,103 @@ public class Demo {
             argCoinValue = tryParseDouble(argCoinValueStr);
 
             if (argCoinValue == null) {
-                System.out.println(STR_INVALID_DOUBLE);
+                System.err.println(STR_INVALID_DOUBLE);
                 System.exit(1);
             }
         }
 
-        // interactive if the user left one or more args out
-        boolean interactive = argMint == null || argCoinValue == null;
+        demoMintsUntilZero(sc, argMint, argCoinValue);
+    }
 
-        // the loop keeps going if we are in an interactive session
+    /**
+      demoMintsUntilZero
+
+      Demos mints until 0 is given as a mint name, or you can specify
+      a parameter for it to use as the only mint (skips user input).
+
+      @param sc User input
+      @param maybeMint a mint to use instead of pestering the user (optional)
+      @param maybeValue a value to use instead of pestering the user (optional)
+      */
+    private static void demoMintsUntilZero(
+            Scanner sc,
+            Mint maybeMint,
+            Double maybeValue) {
+
+        // use this mint instead of user's input!
+        if (maybeMint != null) {
+            demoCoinsUntilZero(sc, maybeMint, maybeValue);
+            return;
+        }
+
+        Mint mint;
+
+        // annoy the user until we get a valid mint object
         do {
+            mint = null;
 
-            // recall that argMint is null if we are interactive
-            Mint mint = argMint;
+            String mintName = prompt(sc, "Which mint? (0 to quit)");
 
-            // recall that argCoinValue is null if we are interactive
-            Double coinValue = argCoinValue;
-
-            while (mint == null) {
-                mint = getMint(prompt(sc, "Which mint?"));
-
-                if (mint == null) {
-                    System.out.println(STR_INVALID_MINT);
-                    // don't exit, let the user try again
-                }
+            // 0 to quit
+            if ("0".equals(mintName)) {
+                return;
             }
 
+            mint = getMint(mintName);
+
+            if (mint == null) {
+                System.out.println(STR_INVALID_MINT);
+                continue;
+            }
+
+            demoCoinsUntilZero(sc, mint, maybeValue);
+        } while (true);
+    }
+
+    /**
+      demoCoinsUntilZero
+
+      Demos coin creation until 0 is given as a denomination.
+
+      @param sc User input
+      @param mint The mint that mints coins
+      @param maybeValue the value to use instead of pestering the user
+      */
+    private static void demoCoinsUntilZero(
+            Scanner sc,
+            Mint mint,
+            Double maybeValue) {
+
+        if (maybeValue != null) {
+            demoMakeCoin(sc, mint, maybeValue);
+            return;
+        }
+
+        Double coinValue;
+
+        // keep making coins until the user gives a 0
+        do {
+            coinValue = null;
+
+            // annoy the user until we get a valid coin denomination
             while (coinValue == null) {
-                coinValue = tryParseDouble(prompt(sc, "Which coin value?"));
+                coinValue = tryParseDouble(
+                        prompt(sc, "Which coin value? (0 to quit)"));
 
                 if (coinValue == null) {
                     System.out.println(STR_INVALID_DOUBLE);
                 }
             }
 
+            // if the user gave zero we are done here
+            if (coinValue == 0.0) {
+                return;
+            }
+
+            // valid positive double value, so demo it!
             demoMakeCoin(sc, mint, coinValue);
 
-        } while(interactive);
+        } while (true);
     }
 
     /**
@@ -165,6 +229,12 @@ public class Demo {
       @param value the value of the coin minted
       */
     private static void demoMakeCoin(Scanner sc, Mint mint, double value) {
+        // if the user gave a negative coin value,
+        if (value < 0.0) {
+            System.out.println("Coins can't be negative.");
+            return;
+        }
+
         boolean running = true;
         AbstractCoin c;
 
