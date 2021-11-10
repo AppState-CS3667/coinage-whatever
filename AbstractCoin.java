@@ -85,6 +85,15 @@ public abstract class AbstractCoin {
     }
 
     /**
+      Returns the smelt specs of this coin.
+
+      @return the smelt specs
+      */
+    public String getSmeltSpecs() {
+        return this.smeltStrategy.getSmeltSpecs();
+    }
+
+    /**
       Imprints the coin.
 
       @return true if successful, false otherwise
