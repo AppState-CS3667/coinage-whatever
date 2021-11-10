@@ -90,7 +90,7 @@ public abstract class AbstractCoin {
       @return the smelt specs
       */
     public String getSmeltSpecs() {
-        return this.smeltStrategy.getSmeltSpecs();
+        return this.smeltStrategy.getSpecs();
     }
 
     /**
