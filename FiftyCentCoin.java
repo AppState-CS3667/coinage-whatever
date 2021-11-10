@@ -10,6 +10,6 @@ public class FiftyCentCoin extends AbstractCoin {
     /** Constructor for a new FiftyCentCoin type. */
     public FiftyCentCoin() {
         // Call to super to create coin
-        super(0.5, "CAD");
+        super(0.5, "CAD", new FiftyCentCoinImprint());
     }
 }

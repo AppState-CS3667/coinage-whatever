@@ -9,6 +9,6 @@
 public class DollarCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public DollarCoin() {
-        super(1.00, "USD");
+        super(1.00, "USD", new DollarCoinImprint());
     }
 }

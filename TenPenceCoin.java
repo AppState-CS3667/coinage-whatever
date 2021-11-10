@@ -9,7 +9,7 @@
 public class TenPenceCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public TenPenceCoin() {
-        super(0.10, "GBP");
+        super(0.10, "GBP", new TenPenceCoinImprint());
     }
 }
 

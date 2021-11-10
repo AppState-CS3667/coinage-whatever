@@ -9,7 +9,7 @@
 public class TwoPoundCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public TwoPoundCoin() {
-        super(2.00, "GBP");
+        super(2.00, "GBP", new TwoPoundCoinImprint());
     }
 }
 
