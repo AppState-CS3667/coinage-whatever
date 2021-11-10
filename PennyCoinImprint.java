@@ -9,6 +9,7 @@ public class PennyCoinImprint implements ImprintStrategy {
     @Override
     public boolean imprint(AbstractCoin coin) {
         System.out.println("PennyCoinImprint: " + coin);
+        return true;
     }
 
 }
