@@ -100,6 +100,10 @@ public abstract class Mint {
     private final AbstractCoin smeltCoin(AbstractCoin coin) {
         System.out.println(STR_STAGE_SMELT);
         boolean success = coin.smelt();
+
+        System.out.print("Smelt specification: ");
+        System.out.println(coin.getSmeltSpecs());
+
         if (!success) {
             return NULL_COIN;
         }

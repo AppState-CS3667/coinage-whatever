@@ -11,5 +11,10 @@ public class TwoPoundCoinSmelt implements SmeltStrategy {
         System.out.println("TwoPoundCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "outer ring: 76% Cu 20% Zi 4% Ni, inner ring: 75% Cu 25% Ni";
+    }
 }
 

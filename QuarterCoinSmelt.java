@@ -11,5 +11,10 @@ public class QuarterCoinSmelt implements SmeltStrategy {
         System.out.println("QuarterCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "91.67% Cu 8.33% Ni";
+    }
 }
 

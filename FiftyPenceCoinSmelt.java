@@ -11,5 +11,10 @@ public class FiftyPenceCoinSmelt implements SmeltStrategy {
         System.out.println("FiftyPenceCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "75% Cu 25% Ni";
+    }
 }
 

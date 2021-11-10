@@ -11,5 +11,10 @@ public class DollarCoinSmelt implements SmeltStrategy {
         System.out.println("DollarCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "88.5% Cu 6% Zi 3.5% Mn 2% Ni";
+    }
 }
 

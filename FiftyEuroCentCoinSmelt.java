@@ -11,5 +11,10 @@ public class FiftyEuroCentCoinSmelt implements SmeltStrategy {
         System.out.println("FiftyEuroCentCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

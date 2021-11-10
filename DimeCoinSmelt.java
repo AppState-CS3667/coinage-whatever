@@ -11,5 +11,10 @@ public class DimeCoinSmelt implements SmeltStrategy {
         System.out.println("DimeCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "91.67% Cu 8.33% Ni";
+    }
 }
 

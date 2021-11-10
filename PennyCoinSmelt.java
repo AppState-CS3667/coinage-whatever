@@ -12,4 +12,9 @@ public class PennyCoinSmelt implements SmeltStrategy {
         return true;
     }
 
+    @Override
+    public String getSpecs() {
+        return "2.5% Cu 97.5% Zi";
+    }
+
 }
