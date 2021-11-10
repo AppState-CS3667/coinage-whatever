@@ -26,7 +26,7 @@ public class NullMintTest {
     }
 
     /**
-      Test for NullMint toString.
+      Testing for NullMint toString.
      */
     @Test
     public void testToString() {
