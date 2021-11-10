@@ -11,5 +11,10 @@ public class DimeCoinSmelt implements SmeltStrategy {
         System.out.println("DimeCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

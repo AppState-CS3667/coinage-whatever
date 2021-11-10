@@ -11,5 +11,10 @@ public class ToonieCoinSmelt implements SmeltStrategy {
         System.out.println("ToonieCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

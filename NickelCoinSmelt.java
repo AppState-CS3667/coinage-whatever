@@ -11,5 +11,10 @@ public class NickelCoinSmelt implements SmeltStrategy {
         System.out.println("NickelCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

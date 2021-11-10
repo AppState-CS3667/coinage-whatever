@@ -13,4 +13,9 @@ public class NullSmelt implements SmeltStrategy {
         // do nothing and fail
         return false;
     }
+
+    @Override
+    public String getSpecs() {
+        return "No Specification";
+    }
 }

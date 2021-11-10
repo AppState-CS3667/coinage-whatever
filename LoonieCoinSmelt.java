@@ -11,5 +11,10 @@ public class LoonieCoinSmelt implements SmeltStrategy {
         System.out.println("LoonieCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

@@ -11,5 +11,10 @@ public class CADQuarterCoinSmelt implements SmeltStrategy {
         System.out.println("CADQuarterCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

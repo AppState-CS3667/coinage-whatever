@@ -11,5 +11,10 @@ public class CADDimeCoinSmelt implements SmeltStrategy {
         System.out.println("CADDimeCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

@@ -11,5 +11,10 @@ public class PenceCoinSmelt implements SmeltStrategy {
         System.out.println("PenceCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 

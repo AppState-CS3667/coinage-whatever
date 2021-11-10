@@ -11,5 +11,10 @@ public class TwoPoundCoinSmelt implements SmeltStrategy {
         System.out.println("TwoPoundCoinSmelt: " + coin);
         return true;
     }
+
+    @Override
+    public String getSpecs() {
+        return "Unknown";
+    }
 }
 
