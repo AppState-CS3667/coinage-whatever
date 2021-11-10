@@ -17,4 +17,13 @@ public interface SmeltStrategy {
       @return true if successful
       */
     boolean smelt(AbstractCoin self);
+
+    /**
+      getSpecs
+
+      The smelt specification is a string that represents the metals used.
+
+      @return a string reprsenting the smelt specification
+      */
+    String getSpecs();
 }
