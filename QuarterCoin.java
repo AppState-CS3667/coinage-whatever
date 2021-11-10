@@ -9,6 +9,6 @@
 public class QuarterCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public QuarterCoin() {
-        super(0.25, "USD");
+        super(0.25, "USD", new QuarterCoinImprint());
     }
 }

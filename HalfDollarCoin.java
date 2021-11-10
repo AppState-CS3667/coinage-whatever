@@ -9,6 +9,6 @@
 public class HalfDollarCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public HalfDollarCoin() {
-        super(0.5, "USD");
+        super(0.5, "USD", new HalfDollarCoinImprint());
     }
 }

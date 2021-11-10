@@ -10,6 +10,6 @@ public class ToonieCoin extends AbstractCoin {
     /** Constructor for a new ToonieCoin type. */
     public ToonieCoin() {
         // Call to super to create coin
-        super(2.0, "CAD");
+        super(2.0, "CAD", new ToonieCoinImprint());
     }
 }

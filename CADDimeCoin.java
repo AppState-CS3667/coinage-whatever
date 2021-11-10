@@ -11,6 +11,6 @@ public class CADDimeCoin extends AbstractCoin {
     /** Constructor for a new CADDimeCoin type. */
     public CADDimeCoin() {
         // Call to super to create coin
-        super(0.10, "CAD");
+        super(0.10, "CAD", new CADDimeCoinImprint());
     }
 }

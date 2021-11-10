@@ -27,13 +27,13 @@ test: compile $(JUNIT5_JAR)
 clean:
 	rm -f *.class
 
-check: compile
+check:
 	$(CKSTYLE) *.java
 
 # do all the 'testing' things all at once
-all: clean check test demo
+all: clean check test demo_all_coins
 
-all_nc: clean test demo
+all_nc: clean test demo_all_coins
 
 # "PHONY" recipes don't create a file
 .PHONY: all all_nc check test compile demo demo_all_coins clean

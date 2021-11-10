@@ -16,7 +16,7 @@ public class NullCoin extends AbstractCoin {
       Construct a new NullCoin.
       */
     private NullCoin() {
-        super(0.0d, "No Country");
+        super(0.0d, "No Country", new NullImprint());
     }
     
     /**
