@@ -10,6 +10,10 @@ public class CADNickelCoin extends AbstractCoin {
     /** Constructor for a new CADNickelCoin type. */
     public CADNickelCoin() {
         // Call to super to create coin
-        super(0.05, "CAD", new CADNickelCoinImprint());
+        super(
+                0.05,
+                "CAD",
+                new CADNickelCoinImprint(),
+                new CADNickelCoinSmelt());
     }
 }

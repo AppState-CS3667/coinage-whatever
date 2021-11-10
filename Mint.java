@@ -49,9 +49,8 @@ public abstract class Mint {
         System.out.println(this + " is minting a coin valued at "
                 + denomination);
 
-        // manufacture (actual smelting of metal)
-        System.out.print(STR_STAGE_SMELT);
-        AbstractCoin coin = smeltCoin(denomination);
+        // create base coin to be modified over time
+        AbstractCoin coin = createBaseCoin(denomination);
 
         // defensive: if our subclass acts out of line and returns null, we
         // are prepared to step in here and put things back on track by
@@ -60,13 +59,8 @@ public abstract class Mint {
             coin = NULL_COIN;
         }
 
-        // detect smelt failure
-        if (coin == NULL_COIN) {
-            System.out.println(STR_FAIL);
-        }
-        else {
-            System.out.println(STR_OK);
-        }
+        // smelting
+        coin = smeltCoin(coin);
 
         // imprinting
         coin = imprintCoin(coin);
@@ -85,14 +79,36 @@ public abstract class Mint {
     }
 
     /**
+      createBaseCoin
+
+      Creates the base coin that will be processed.
+
+      @param denomination the value of the base coin.
+
+      @return a newly made coin object that has yet to be imprinted/smelted
+      */
+    protected abstract AbstractCoin createBaseCoin(double denomination);
+
+    /**
       smeltCoin
 
-      Manufactures (smelts) a coin based on the given denomination.
+      Smelts a coin.
 
-      @param denomination the value of the coin in the local currency.
+      @param coin the coin to smelt
       @return a newly made coin object
       */
-    protected abstract AbstractCoin smeltCoin(double denomination);
+    private final AbstractCoin smeltCoin(AbstractCoin coin) {
+        System.out.println(STR_STAGE_SMELT);
+        boolean success = coin.smelt();
+
+        System.out.print("Smelt specification: ");
+        System.out.println(coin.getSmeltSpecs());
+
+        if (!success) {
+            return NULL_COIN;
+        }
+        return coin;
+    }
     
     /**
       inspectCoin

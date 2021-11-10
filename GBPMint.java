@@ -17,7 +17,7 @@ public class GBPMint extends Mint {
     }
 
     @Override
-    public AbstractCoin smeltCoin(double denomination) {
+    public AbstractCoin createBaseCoin(double denomination) {
         
         if (denomination == 0.01) {
             return new PenceCoin();

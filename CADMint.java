@@ -20,7 +20,7 @@ public class CADMint extends Mint {
     }
 
     @Override
-    public AbstractCoin smeltCoin(double denomination) {
+    public AbstractCoin createBaseCoin(double denomination) {
         // This if else if statement determines which coin to make
         if (denomination == 2.0) {
             return new ToonieCoin();

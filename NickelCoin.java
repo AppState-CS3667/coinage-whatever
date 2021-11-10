@@ -9,6 +9,6 @@
 public class NickelCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public NickelCoin() {
-        super(0.05, "USD", new NickelCoinImprint());
+        super(0.05, "USD", new NickelCoinImprint(), new NickelCoinSmelt());
     }
 }

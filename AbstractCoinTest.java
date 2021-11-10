@@ -21,7 +21,7 @@ public class AbstractCoinTest {
     private static class MockCoin extends AbstractCoin {
         /** Create a new MockCoin. */
         public MockCoin() {
-            super(0.0, "Mock Country", new NullImprint());
+            super(0.0, "Mock Country", new NullImprint(), new NullSmelt());
         }
     }
 

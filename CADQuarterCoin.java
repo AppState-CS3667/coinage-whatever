@@ -11,6 +11,10 @@ public class CADQuarterCoin extends AbstractCoin {
     /** Constructor for a new CADQuarterCoin type. */
     public CADQuarterCoin() {
         // Call to super to create coin
-        super(0.25, "CAD", new CADQuarterCoinImprint());
+        super(
+                0.25,
+                "CAD",
+                new CADQuarterCoinImprint(),
+                new CADQuarterCoinSmelt());
     }
 }

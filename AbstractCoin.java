@@ -11,8 +11,12 @@ public abstract class AbstractCoin {
     private double value;
     private String countryCode;
     private ImprintStrategy imprintStrategy;
+    private SmeltStrategy smeltStrategy;
     private int mintingYear;
     // metallic composition later
+
+    private boolean smelted = false;
+    private boolean imprinted = false;
 
     /**
       Creates a new AbstractCoin.
@@ -20,11 +24,13 @@ public abstract class AbstractCoin {
       @param value the value of this coin in the local currency
       @param countryCode the country code of this coin, e.g. USD
       @param imprintStrategy the strategy for imprinting this coin
+      @param smeltStrategy the strategy for smelting this coin
       */
     public AbstractCoin(
             double value,
             String countryCode,
-            ImprintStrategy imprintStrategy) {
+            ImprintStrategy imprintStrategy,
+            SmeltStrategy smeltStrategy) {
 
         // guard against "bad" values
 
@@ -40,9 +46,14 @@ public abstract class AbstractCoin {
             throw new NullPointerException("imprintStrategy cannot be null");
         }
 
+        if (smeltStrategy == null) {
+            throw new NullPointerException("smeltStrategy cannot be null"); 
+        }
+
         this.value = value;
         this.countryCode = countryCode;
         this.imprintStrategy = imprintStrategy;
+        this.smeltStrategy = smeltStrategy;
         this.mintingYear = DateHelper.getYear();
     }
 
@@ -74,12 +85,44 @@ public abstract class AbstractCoin {
     }
 
     /**
+      Returns the smelt specs of this coin.
+
+      @return the smelt specs
+      */
+    public String getSmeltSpecs() {
+        return this.smeltStrategy.getSpecs();
+    }
+
+    /**
       Imprints the coin.
 
       @return true if successful, false otherwise
       */
     public boolean imprint() {
-        return this.imprintStrategy.imprint(this);
+        if (this.imprinted) {
+            throw new IllegalStateException("Already imprinted");
+        }
+        boolean success = this.imprintStrategy.imprint(this);
+        if (success) {
+            this.imprinted = true;
+        }
+        return success;
+    }
+
+    /**
+      Smelts the coin.
+
+      @return true if successful, false otherwise
+      */
+    public boolean smelt() {
+        if (this.smelted) {
+            throw new IllegalStateException("Already smelted");
+        }
+        boolean success = this.smeltStrategy.smelt(this);
+        if (success) {
+            this.smelted = true;
+        }
+        return success;
     }
 
     @Override
