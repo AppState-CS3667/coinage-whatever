@@ -17,7 +17,7 @@ public class USDMint extends Mint {
     }
 
     @Override
-    public AbstractCoin smeltCoin(double denomination) {
+    public AbstractCoin createBaseCoin(double denomination) {
 
         // java doesn't like doubles in switch statements
         // i love java until i have to write it :)

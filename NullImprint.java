@@ -10,7 +10,7 @@ public class NullImprint implements ImprintStrategy {
    
     @Override
     public boolean imprint(AbstractCoin self) {
-        // do nothing and always succeed!
-        return true;
+        // do nothing and always fail!
+        return false;
     }
 }

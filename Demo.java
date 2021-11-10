@@ -148,7 +148,7 @@ public class Demo {
                 return GBPMint.getInstance();
             case "null":
             case "mint":
-                return MockMint.getInstance();
+                return NullMint.getInstance();
             default:
                 return null;
         }
