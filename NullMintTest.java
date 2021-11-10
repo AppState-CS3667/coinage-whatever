@@ -13,7 +13,7 @@ public class NullMintTest {
     private static final Mint MINT = NullMint.getInstance();
 
     /**
-      Tests for basecoin for NullMint.
+      Test for basecoin for NullMint.
      */
     @Test
     public void testBaseCoin() {
