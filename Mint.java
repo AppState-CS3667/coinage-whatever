@@ -68,6 +68,9 @@ public abstract class Mint {
             System.out.println(STR_OK);
         }
 
+        // imprinting
+        coin = imprintCoin(coin);
+
         // inspection
         coin = inspectCoin(coin);
 
