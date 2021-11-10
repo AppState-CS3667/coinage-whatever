@@ -9,6 +9,10 @@
 public class FiftyEuroCentCoin extends AbstractCoin {
     /** Construct a new coin of this type. */
     public FiftyEuroCentCoin() {
-        super(0.5, "EUR", new FiftyEuroCentCoinImprint());
+        super(
+                0.5,
+                "EUR",
+                new FiftyEuroCentCoinImprint(),
+                new FiftyEuroCentCoinSmelt());
     }
 }
