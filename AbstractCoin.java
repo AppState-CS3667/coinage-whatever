@@ -12,7 +12,7 @@ public abstract class AbstractCoin {
     private String countryCode;
     private ImprintStrategy imprintStrategy;
     private SmeltStrategy smeltStrategy;
-    // int mintingYear;
+    private int mintingYear;
     // metallic composition later
 
     private boolean smelted = false;
@@ -54,6 +54,7 @@ public abstract class AbstractCoin {
         this.countryCode = countryCode;
         this.imprintStrategy = imprintStrategy;
         this.smeltStrategy = smeltStrategy;
+        this.mintingYear = DateHelper.getYear();
     }
 
     /**
@@ -72,6 +73,15 @@ public abstract class AbstractCoin {
       */
     public String getCountryCode() {
         return countryCode;
+    }
+
+    /**
+      Returns the minting year of this coin.
+
+      @return the current year
+      */
+    public int getMintingYear() {
+        return this.mintingYear;
     }
 
     /**
