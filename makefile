@@ -27,7 +27,7 @@ test: compile $(JUNIT5_JAR)
 clean:
 	rm -f *.class
 
-check: compile
+check:
 	$(CKSTYLE) *.java
 
 # do all the 'testing' things all at once
