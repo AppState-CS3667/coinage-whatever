@@ -65,6 +65,19 @@ public class AbstractCoinTest {
 
         TestHelper.assertEquals(expectedCountry, testCountry);
     }
+    
+    /**
+     * AbstractCoin mintYear test.
+     */
+    @Test
+    public void testMintYear() {
+        AbstractCoin mockCoin = new MockCoin();
+
+        int expectedYear = 2021;
+        int testYear = mockCoin.getMintingYear();
+
+        TestHelper.assertEquals(expectedYear, testYear);
+    }
 
     /**
       AbstractCoin toString test.
