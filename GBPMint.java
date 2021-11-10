@@ -52,7 +52,7 @@ public class GBPMint extends Mint {
 
     @Override
     public String toString() {
-        return "GPB Mint";
+        return "GBP Mint";
     }
 
     /**
