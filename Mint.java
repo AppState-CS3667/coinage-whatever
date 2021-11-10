@@ -87,14 +87,14 @@ public abstract class Mint {
 
       @return a newly made coin object that has yet to be imprinted/smelted
       */
-    protected abstract AbstractCAoin createBaseCoin(double denomination);
+    protected abstract AbstractCoin createBaseCoin(double denomination);
 
     /**
       smeltCoin
 
-      Manufactures (smelts) a coin based on the given denomination.
+      Smelts a coin.
 
-      @param denomination the value of the coin in the local currency.
+      @param coin the coin to smelt
       @return a newly made coin object
       */
     private final AbstractCoin smeltCoin(AbstractCoin coin) {

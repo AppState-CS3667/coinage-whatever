@@ -26,7 +26,7 @@ public class USDMintTest {
     public void testValidCoins() {
         for (int i = 0; i < VALUES.length; i++) {
             double val = VALUES[i];
-            AbstractCoin c = MINT.smeltCoin(val);
+            AbstractCoin c = MINT.createBaseCoin(val);
             if (c == null) {
                 fail("Issue with value " + val + " : returned null");
             }
@@ -53,7 +53,7 @@ public class USDMintTest {
     public void testVeryBadCoins() {
         for (int i = 0; i < VERY_BAD_VALUES.length; i++) {
             double val = VERY_BAD_VALUES[i];
-            AbstractCoin c = MINT.smeltCoin(val);
+            AbstractCoin c = MINT.createBaseCoin(val);
 
             if (c == null) {
                 fail("Issue with value " + val + " : returned null");
