@@ -64,7 +64,7 @@ public abstract class AbstractCoin {
     }
 
     /**
-      Imprints the coin
+      Imprints the coin.
 
       @return true if successful, false otherwise
       */
