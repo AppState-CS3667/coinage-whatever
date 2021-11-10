@@ -239,7 +239,7 @@ public class Demo {
         AbstractCoin c;
 
         do {
-            c = mint.makeCoin(value);
+            c = MintHelper.makeCoin(mint, value);
 
             if (c == NullCoin.getInstance()) {
                 running = yn(sc, "Coin failed! Try again?");
