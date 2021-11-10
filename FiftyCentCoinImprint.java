@@ -4,12 +4,12 @@
   @author team 'whatever'
   @version 1
   */
-public class PennyCoinImprint implements ImprintStrategy {
-    
+public class FiftyCentCoinImprint implements ImprintStrategy {
+
     @Override
     public boolean imprint(AbstractCoin coin) {
-        System.out.println("PennyCoinImprint: " + coin);
+        System.out.println("FiftyCentCoinImprint: " + coin);
         return true;
     }
-
 }
+
