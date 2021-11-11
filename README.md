@@ -23,3 +23,9 @@
 ### Links
 
 - [Assignment](https://asulearn.appstate.edu/mod/assign/view.php?id=1694845)
+
+### Note about TwentyEuroCentCoin
+
+The assignment details specifically state that a Twenty Euro Cent Coin has
+a denomination of `0.25`. We have opted to reflect this quirk faithfully to
+the ASULearn assignment details.
