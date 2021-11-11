@@ -23,7 +23,8 @@ public class PoundCoinSmeltTest {
      */
     @Test
     public void testSmeltSpecs() {
-        TestHelper.assertEquals(coin.getSmeltSpecs(), "70% Cu 24.5% Zi 5.5% Ni");
+        TestHelper.assertEquals(coin.getSmeltSpecs(),
+                "70% Cu 24.5% Zi 5.5% Ni");
     }
 
     /**

@@ -23,7 +23,8 @@ public class TwoPoundCoinSmeltTest {
      */
     @Test
     public void testSmeltSpecs() {
-        TestHelper.assertEquals(coin.getSmeltSpecs(), "outer ring: 76% Cu 20% Zi 4% Ni, inner ring: 75% Cu 25% Ni");
+        TestHelper.assertEquals(coin.getSmeltSpecs(),
+                "outer ring: 76% Cu 20% Zi 4% Ni, inner ring: 75% Cu 25% Ni");
     }
 
     /**
