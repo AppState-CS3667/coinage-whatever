@@ -24,7 +24,7 @@ public class TenPenceCoinImprintTest {
     @Test
     public void testSmeltOutput() {
         TestHelper.assertEquals(
-                "TenPenceCoinImprint: [value=0.01,countryCode=GBP]",
+                "TenPenceCoinImprint: [value=0.1,countryCode=GBP]",
                 "TenPenceCoinImprint: " + coin);
     }
 }
