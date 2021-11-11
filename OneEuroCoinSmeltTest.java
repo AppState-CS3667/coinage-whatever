@@ -36,3 +36,4 @@ public class OneEuroCoinSmeltTest {
                 "OneEuroCoinSmelt: " + coin);
     }
 }
+

@@ -36,3 +36,4 @@ public class FiftyCentCoinSmeltTest {
                 "FiftyCentCoinSmelt: " + coin);
     }
 }
+

@@ -36,3 +36,4 @@ public class ToonieCoinSmeltTest {
                 "ToonieCoinSmelt: " + coin);
     }
 }
+

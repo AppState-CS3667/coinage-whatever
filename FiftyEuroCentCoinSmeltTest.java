@@ -36,3 +36,4 @@ public class FiftyEuroCentCoinSmeltTest {
                 "FiftyEuroCentCoinSmelt: " + coin);
     }
 }
+
