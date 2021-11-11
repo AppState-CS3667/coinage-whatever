@@ -23,6 +23,6 @@ public class NullImprintTest {
      */
     @Test
     public void testImprintOutput() {
-        TestHelper.assertEquals((coin.getImprintSpecs(), "No Specification");
+        TestHelper.assertEquals(coin.getSmeltSpecs(), "No Specification");
     }
 }
