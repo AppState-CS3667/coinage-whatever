@@ -24,6 +24,8 @@ public class TwentyEuroCentCoinTest {
       */
     @Test
     public void testValue() {
+        // The assignment details say a twenty euro cent coin has a value
+        // of 0.25
         TestHelper.assertEquals(coin.getValue(), 0.25);
     }
 

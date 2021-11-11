@@ -24,7 +24,8 @@ public class TwentyEuroCentCoinImprintTest {
     @Test
     public void testSmeltOutput() {
         TestHelper.assertEquals(
-                "TwentyEuroCentCoinImprint: [value=0.2,countryCode=EUR]",
+                // The assignment details say a twenty euro cent coin is 0.25
+                "TwentyEuroCentCoinImprint: [value=0.25,countryCode=EUR]",
                 "TwentyEuroCentCoinImprint: " + coin);
     }
 }
